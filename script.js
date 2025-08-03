@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 	const input = document.getElementById('input')
 	const output = document.getElementById('output')
-
+	const terminal = document.getElementById('terminal')
 
 	const helpMessage = `
 <b>💻 System Commands:</b><br>
@@ -60,6 +60,13 @@ document.addEventListener("DOMContentLoaded", function() {
 		projects: `My Projects:
 - <a href="https://footy.runat.xyz" class="custom-link" target="_blank">FootyRate</a>
 - <a href="https://blog.runat.xyz" class="custom-link" target="_blank">RunAt's Blog</a>
+`,
+		skills: `My Skills:
+- <a href="https://codeforces.com/profile/RunAt" class="custom-link" target="_blank">Competitive Programming</a> | 1200+ Rated
+- <a href="https://leetcode.com/RunAtMe" class="custom-link" target="_blank">Leetcode</a>
+- Languages: go, c++, python, javascript
+- Web Development
+- TUI applications
 `
 	}
 	function append_command(cmd, response) {
@@ -110,6 +117,10 @@ document.addEventListener("DOMContentLoaded", function() {
 	// input.addEventListener("input", function() {
 	// 	console.log(input.value);
 	// })
+
+	terminal.addEventListener('click', () => {
+		input.focus();
+	})
 
 	reset_terminal();
 
