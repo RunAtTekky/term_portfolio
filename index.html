@@ -10,11 +10,14 @@
 
 <body>
 	<main>
-		<div id="terminal">
-			<h1>
-				Type 'help' to see available commands
-			</h1>
-			<input id="input" placeholder="Enter command" autofocus>
+		<div id="terminal-container">
+			<div id="terminal">
+				<div id="output"></div>
+				<div class="input-container">
+					<span class="input-prompt">$</span>
+					<input id="input" placeholder="Enter command" autofocus>
+				</div>
+			</div>
 		</div>
 		<div id="sidebar">
 			<h1>

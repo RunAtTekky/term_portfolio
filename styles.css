@@ -4,6 +4,7 @@
 	padding: 0;
 	margin: 0;
 	font-family: "Fira Code", monospace;
+	box-sizing: border-box;
 }
 
 h1 {
@@ -15,22 +16,33 @@ main {
 	height: 100vh;
 	width: 100vw;
 
+	color: green;
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+#terminal-container {
+	background-color: beige;
+	height: 80vh;
+	width: 80vw;
 }
 
 #terminal {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 
-	height: 80vh;
-	width: 80vw;
-	border: solid 2px red;
+	overflow-y: auto;
 
-	background-color: #294D4A;
+	padding: 20px;
+
+	height: 100%;
+	width: 100%;
+	background-color: black;
+
 }
 
 #sidebar {
@@ -39,21 +51,59 @@ main {
 	justify-content: center;
 	height: 80vh;
 	width: 15vw;
-	border: solid 2px yellow;
 	background-color: #776472;
 }
 
-input {
+.input-container {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.input-prompt {
+	color: #008000;
+	margin-right: 5px;
+	font-size: 2rem;
+}
+
+#input {
 	background-color: transparent;
 	outline: none;
 	border: none;
 	box-shadow: none;
-	transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+	margin-left: 12px;
 	font-size: 2rem;
+	color: green;
+	caret-color: green;
 }
 
 input:focus {
 	outline: none;
 	border: none;
 	box-shadow: none;
+}
+
+#output {
+	width: 100%;
+}
+
+.cmd-line {
+	margin-top: 10px;
+	white-space: pre-wrap;
+	line-height: 1.5;
+	font-size: 2rem;
+}
+
+.cmd-result {
+	margin-left: 40px;
+	white-space: pre-wrap;
+	line-height: 1.5;
+	font-size: 1.5rem;
+}
+
+.help-message {
+	font-style: italic;
+	padding-bottom: 10px;
 }
