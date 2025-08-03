@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 
 	function append_command(cmd, response) {
-		console.log("I'm appending")
 		let cmd_line = document.createElement("div");
 		cmd_line.classList.add("cmd-line")
 		cmd_line.innerHTML = `\$ ${cmd}`;
@@ -114,6 +113,13 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	}
 
+	function get_closest_command(cmd) {
+		const all_commands = Object.keys(commands);
+		let closest_cmd = all_commands.find(command => command.startsWith(cmd));
+
+		return closest_cmd ? `Did you mean <b>${closest_cmd}</b>?` : `Command not found: ${cmd}`;
+	}
+
 	function process_command(cmd) {
 		cmd = cmd.toLowerCase();
 		if (cmd === "") {
@@ -124,11 +130,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			commands[cmd](); return;
 		}
 
-		let response = typeof commands[cmd] === "function" ? commands[cmd]() : commands[cmd];
+		let response = typeof commands[cmd] === "function" ? commands[cmd]() : commands[cmd] || get_closest_command(cmd);
 
 		append_command(cmd, response);
 
-		console.log(cmd);
+		// console.log(cmd);
 	}
 
 	input.addEventListener("keydown", function(event) {
