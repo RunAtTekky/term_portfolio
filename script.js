@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			return `<pre>
         <span class="blue">      /\\      </span>  User: RunAt
         <span class="blue">     /  \\     </span>  OS: Arch Linux
-        <span class="blue">    /    \\    </span>  Hostname: runat.xyz
+        <span class="blue">    /    \\    </span>  Hostname: www.runat.xyz
         <span class="blue">   /  /\\  \\   </span>  Time: ${currentTime}
         <span class="blue">  /  (--)  \\  </span>  Email: <a href="mailto:varunrawat343@gmail.com" class="custom-link">varunrawat343@gmail.com</a>
         <span class="blue"> /  /    \\  \\ </span>  GitHub: <a href="https://GitHub.com/RunAtTekky" target="_blank" class="custom-link">GitHub.com/RunAtTekky</a>
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			return `Opening <a href="https://blog.runat.xyz" target="_blank" class="custom-link">RunAt's Blog</a>...`;
 		},
 
-		whoami: `<a href="https://runat.xyz" class="custom-link">RunAt</a> | Developer
+		whoami: `<a href="https://www.runat.xyz" class="custom-link">RunAt</a> | Developer
 <a href="https://linktr.ee/RunAt" class="custom-link">Linktree</a> | Useful links
 `,
 
@@ -164,7 +164,13 @@ document.addEventListener("DOMContentLoaded", function() {
 			event.preventDefault();
 			input.value = "";
 			hint.textContent = "";
+		} else if (event.key === "l" && event.ctrlKey) {
+			event.preventDefault();
+			reset_terminal();
+			input.value = "";
+			hint.textContent = "";
 		}
+
 	});
 
 	// Here I have to put auto-complete hint

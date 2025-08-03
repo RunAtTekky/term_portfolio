@@ -122,11 +122,16 @@ input:focus {
 }
 
 #sidebar button {
+	border-radius: 5px;
 	background-color: #2a9d8f;
 	cursor: pointer;
 	font-weight: bolder;
 	border: none;
 	font-size: 20px;
+}
+
+#sidebar button:hover {
+	opacity: 0.8
 }
 
 #autocomplete-hint {
@@ -135,4 +140,36 @@ input:focus {
 	font-size: 2rem;
 	position: absolute;
 	margin-left: 35px;
+}
+
+@media (max-width: 768px) {
+	main {
+		flex-direction: column;
+		font-size: 12px;
+		overflow: hidden;
+	}
+
+	.cmd-line {
+		font-size: 12px;
+	}
+
+	.cmd-result {
+		font-size: 12px;
+	}
+
+	#terminal-container {
+		height: 70vh;
+		width: 95vw;
+		margin: auto;
+	}
+
+	#sidebar {
+		height: 20vh;
+		grid-template-columns: repeat(5, minmax(60px, 1fr));
+		max-width: 600px;
+	}
+
+	#sidebar button {
+		font-size: small;
+	}
 }
