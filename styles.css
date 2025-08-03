@@ -107,3 +107,8 @@ input:focus {
 	font-style: italic;
 	padding-bottom: 10px;
 }
+
+.custom-link {
+	color: green;
+	font-weight: 800;
+}

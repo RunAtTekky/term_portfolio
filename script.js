@@ -26,8 +26,42 @@ document.addEventListener("DOMContentLoaded", function() {
 	const commands = {
 		help: helpMessage,
 		clear: () => reset_terminal(),
-	}
 
+		fetch: () => {
+			let currentTime = new Date().toLocaleTimeString();
+			return `<pre>
+        <span class="blue">      /\\      </span>  User: RunAt
+        <span class="blue">     /  \\     </span>  OS: Arch Linux
+        <span class="blue">    /    \\    </span>  Hostname: runat.xyz
+        <span class="blue">   /  /\\  \\   </span>  Time: ${currentTime}
+        <span class="blue">  /  (--)  \\  </span>  Email: <a href="mailto:varunrawat343@gmail.com" class="custom-link">varunrawat343@gmail.com</a>
+        <span class="blue"> /  /    \\  \\ </span>  GitHub: <a href="https://GitHub.com/RunAtTekky" target="_blank" class="custom-link">GitHub.com/RunAtTekky</a>
+        <span class="blue">/___\\    /___\\</span>  LinkedIn: <a href="https://LinkedIn.com/in/RunAt" target="_blank" class="custom-link">LinkedIn.com/in/RunAt</a>
+        </pre>`;
+		},
+
+		github: () => {
+			window.open("https://github.com/RunAtTekky", "_blank");
+			return `Opening <a href="https://github.com/RunAtTekky" target="_blank" class="custom-link">GitHub/RunAtTekky</a>...`;
+		},
+
+		linkedin: () => {
+			window.open("https://linkedin.com/in/RunAt", "_blank");
+			return `Opening <a href="https://linkedin.com/in/RunAt" target="_blank" class="custom-link">LinkedIn/RunAt</a>...`;
+		},
+
+		blog: () => {
+			window.open("https://blog.runat.xyz", "_blank");
+			return `Opening <a href="https://blog.runat.xyz" target="_blank" class="custom-link">RunAt's Blog</a>...`;
+		},
+
+		whoami: `<a href="https://runat.xyz" class="custom-link">RunAt</a> | Developer`,
+
+		projects: `My Projects:
+- <a href="https://footy.runat.xyz" class="custom-link" target="_blank">FootyRate</a>
+- <a href="https://blog.runat.xyz" class="custom-link" target="_blank">RunAt's Blog</a>
+`
+	}
 	function append_command(cmd, response) {
 		console.log("I'm appending")
 		let cmd_line = document.createElement("div");
