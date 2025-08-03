@@ -2,6 +2,32 @@ document.addEventListener("DOMContentLoaded", function() {
 	const input = document.getElementById('input')
 	const output = document.getElementById('output')
 
+
+	const helpMessage = `
+<b>💻 System Commands:</b><br>
+<b>help or h</b>        	- Show available commands<br>
+<b>clear or cls</b>       	- Clear the terminal<br>
+<b>neofetch or fetch</b>    	- Display system info (Arch Linux style)<br>
+<br>
+<b>👤 Personal Information:</b><br>
+<b>whoami</b>      - Display my identity<br>
+<b>skills</b>      - Show my technical skills<br>
+<b>projects</b>    - List my featured projects<br>
+<br>
+<b>🌐 Online Links:</b><br>
+<b>linkedin or ln</b>	- Open my LinkedIn profile<br>
+<b>github or gh</b>	- Open my GitHub profile<br>
+<b>blog</b>		- Open my blog site<br>
+<br>
+<b>📄 Documents:</b><br>
+<b>resume or r</b>      - Download my resume<br>
+`;
+
+	const commands = {
+		help: helpMessage,
+		clear: () => reset_terminal(),
+	}
+
 	function append_command(cmd, response) {
 		console.log("I'm appending")
 		let cmd_line = document.createElement("div");
@@ -23,15 +49,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	function process_command(cmd) {
 		cmd = cmd.toLowerCase();
-		let response;
-		if (cmd === "help") {
-			response = 'Type help to get available commands';
+		if (cmd === "") {
+			return;
 		}
 
 		if (cmd === "clear") {
-			reset_terminal();
-			return;
+			commands[cmd](); return;
 		}
+
+		let response = typeof commands[cmd] === "function" ? commands[cmd]() : commands[cmd];
 
 		append_command(cmd, response);
 
