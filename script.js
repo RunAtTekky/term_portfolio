@@ -99,6 +99,21 @@ document.addEventListener("DOMContentLoaded", function() {
 		output.innerHTML = `<div class="help-message">Type 'help' to see available commands.</div>`;
 	}
 
+	function create_sidebar() {
+		const sidebar = document.getElementById('sidebar');
+		const all_commands = Object.keys(commands);
+
+		[...all_commands].sort().forEach((cmd) => {
+			const button = document.createElement("button");
+			button.dataset.cmd = cmd;
+			button.textContent = cmd;
+			button.addEventListener('click', () => {
+				process_command(cmd);
+			})
+			sidebar.appendChild(button);
+		});
+	}
+
 	function process_command(cmd) {
 		cmd = cmd.toLowerCase();
 		if (cmd === "") {
@@ -134,5 +149,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	})
 
 	reset_terminal();
+	create_sidebar();
 
 });

@@ -27,6 +27,8 @@ main {
 	background-color: beige;
 	height: 80vh;
 	width: 80vw;
+	box-shadow: 0 0 30px rgba(0, 255, 153, 0.2);
+	backdrop-filter: blur(10px);
 }
 
 #terminal {
@@ -43,15 +45,6 @@ main {
 	width: 100%;
 	background-color: black;
 
-}
-
-#sidebar {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 80vh;
-	width: 15vw;
-	background-color: #776472;
 }
 
 .input-container {
@@ -111,4 +104,22 @@ input:focus {
 .custom-link {
 	color: green;
 	font-weight: 800;
+}
+
+#sidebar {
+	height: 60vh;
+	padding: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: 10px;
+	flex: 1 1 200px;
+	max-width: 350px;
+}
+
+#sidebar button {
+	background-color: #0FF4C6;
+	cursor: pointer;
+	font-weight: bold;
+	border: none;
+	font-size: 1rem;
 }
