@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+
 * {
 	padding: 0;
 	margin: 0;
+	font-family: "Fira Code", monospace;
 }
 
 h1 {
@@ -17,8 +20,9 @@ main {
 	justify-content: center;
 }
 
-.terminal {
+#terminal {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 
@@ -29,7 +33,7 @@ main {
 	background-color: #294D4A;
 }
 
-.sidebar {
+#sidebar {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -37,4 +41,19 @@ main {
 	width: 15vw;
 	border: solid 2px yellow;
 	background-color: #776472;
+}
+
+input {
+	background-color: transparent;
+	outline: none;
+	border: none;
+	box-shadow: none;
+	transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+	font-size: 2rem;
+}
+
+input:focus {
+	outline: none;
+	border: none;
+	box-shadow: none;
 }
