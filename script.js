@@ -5,22 +5,22 @@ document.addEventListener("DOMContentLoaded", function() {
 	const hint = document.getElementById('autocomplete-hint');
 
 	const helpMessage = `
-<b>💻 System Commands:</b><br>
+<b style="color: green">💻 System Commands:</b><br>
 <b>help or h</b>        	- Show available commands<br>
 <b>clear or cls</b>       	- Clear the terminal<br>
 <b>neofetch or fetch</b>    	- Display system info (Arch Linux style)<br>
 <br>
-<b>👤 Personal Information:</b><br>
+<b style="color: green">👤 Personal Information:</b><br>
 <b>whoami</b>      - Display my identity<br>
 <b>skills</b>      - Show my technical skills<br>
 <b>projects</b>    - List my featured projects<br>
 <br>
-<b>🌐 Online Links:</b><br>
+<b style="color: green">🌐 Online Links:</b><br>
 <b>linkedin or ln</b>	- Open my LinkedIn profile<br>
 <b>github or gh</b>	- Open my GitHub profile<br>
 <b>blog</b>		- Open my blog site<br>
 <br>
-<b>📄 Documents:</b><br>
+<b style="color: green">📄 Documents:</b><br>
 <b>resume or r</b>      - Download my resume<br>
 `;
 
@@ -56,7 +56,9 @@ document.addEventListener("DOMContentLoaded", function() {
 			return `Opening <a href="https://blog.runat.xyz" target="_blank" class="custom-link">RunAt's Blog</a>...`;
 		},
 
-		whoami: `<a href="https://runat.xyz" class="custom-link">RunAt</a> | Developer`,
+		whoami: `<a href="https://runat.xyz" class="custom-link">RunAt</a> | Developer
+<a href="https://linktr.ee/RunAt" class="custom-link">Linktree</a> | Useful links
+`,
 
 		projects: `My Projects:
 - <a href="https://footy.runat.xyz" class="custom-link" target="_blank">FootyRate</a>
@@ -118,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		const all_commands = Object.keys(commands);
 		let closest_cmd = all_commands.find(command => command.startsWith(cmd));
 
-		return closest_cmd ? `Did you mean <b>${closest_cmd}</b>?` : `Command not found: ${cmd}`;
+		return closest_cmd ? `Did you mean <b style="color: green">${closest_cmd}</b>?` : `Command not found: ${cmd}`;
 	}
 
 	function update_autocomplete_hint() {
@@ -158,6 +160,10 @@ document.addEventListener("DOMContentLoaded", function() {
 		} else if (event.key === "Tab") {
 			event.preventDefault();
 			input.value = hint.textContent;
+		} else if (event.key === "c" && event.ctrlKey) {
+			event.preventDefault();
+			input.value = "";
+			hint.textContent = "";
 		}
 	});
 
