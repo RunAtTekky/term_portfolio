@@ -67,8 +67,19 @@ document.addEventListener("DOMContentLoaded", function() {
 - Languages: go, c++, python, javascript
 - Web Development
 - TUI applications
-`
+`,
+
+		resume: () => {
+			const link = document.createElement("a");
+			link.href = "/resume.pdf";
+			link.download = "RunAtResume.pdf";
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+			return "Downloading resume...";
+		},
 	}
+
 	function append_command(cmd, response) {
 		console.log("I'm appending")
 		let cmd_line = document.createElement("div");
