@@ -123,3 +123,7 @@ input:focus {
 	border: none;
 	font-size: 1rem;
 }
+
+#autocomplete-hint {
+	color: white;
+}

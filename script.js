@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	const input = document.getElementById('input')
 	const output = document.getElementById('output')
 	const terminal = document.getElementById('terminal')
+	const hint = document.getElementById('autocomplete-hint');
 
 	const helpMessage = `
 <b>💻 System Commands:</b><br>
@@ -120,6 +121,19 @@ document.addEventListener("DOMContentLoaded", function() {
 		return closest_cmd ? `Did you mean <b>${closest_cmd}</b>?` : `Command not found: ${cmd}`;
 	}
 
+	function update_autocomplete_hint() {
+		const current_input = input.value;
+
+		if (current_input === "") {
+			hint.textContent = ""; return;
+		}
+
+		const all_commands = Object.keys(commands);
+		let closest_cmd = all_commands.find(command => command.startsWith(current_input));
+
+		hint.textContent = closest_cmd;
+	}
+
 	function process_command(cmd) {
 		cmd = cmd.toLowerCase();
 		if (cmd === "") {
@@ -133,8 +147,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		let response = typeof commands[cmd] === "function" ? commands[cmd]() : commands[cmd] || get_closest_command(cmd);
 
 		append_command(cmd, response);
-
-		// console.log(cmd);
 	}
 
 	input.addEventListener("keydown", function(event) {
@@ -142,13 +154,15 @@ document.addEventListener("DOMContentLoaded", function() {
 			event.preventDefault();
 			process_command(input.value.trim());
 			input.value = "";
+			hint.textContent = "";
+		} else if (event.key === "Tab") {
+			event.preventDefault();
+			input.value = hint.textContent;
 		}
 	});
 
 	// Here I have to put auto-complete hint
-	// input.addEventListener("input", function() {
-	// 	console.log(input.value);
-	// })
+	input.addEventListener("input", update_autocomplete_hint);
 
 	terminal.addEventListener('click', () => {
 		input.focus();
