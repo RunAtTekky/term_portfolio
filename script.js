@@ -4,6 +4,15 @@ document.addEventListener("DOMContentLoaded", function() {
 	const terminal = document.getElementById('terminal')
 	const hint = document.getElementById('autocomplete-hint');
 
+	let aliases = {
+		"h": "help",
+		"gh": "github",
+		"ln": "linkedin",
+		"r": "resume",
+		"cls": "clear",
+		"neofetch": "fetch",
+	}
+
 	const helpMessage = `
 <b style="color: green">💻 System Commands:</b><br>
 <b>help or h</b>        	- Show available commands<br>
@@ -33,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			return `<pre>
         <span class="blue">      /\\      </span>  User: RunAt
         <span class="blue">     /  \\     </span>  OS: Arch Linux
-        <span class="blue">    /    \\    </span>  Hostname: www.runat.xyz
+        <span class="blue">    /    \\    </span>  Hostname: <a href="https://www.runat.xyz" class="custom-link">www.runat.xyz</a>
         <span class="blue">   /  /\\  \\   </span>  Time: ${currentTime}
         <span class="blue">  /  (--)  \\  </span>  Email: <a href="mailto:varunrawat343@gmail.com" class="custom-link">varunrawat343@gmail.com</a>
         <span class="blue"> /  /    \\  \\ </span>  GitHub: <a href="https://GitHub.com/RunAtTekky" target="_blank" class="custom-link">GitHub.com/RunAtTekky</a>
@@ -142,8 +151,12 @@ document.addEventListener("DOMContentLoaded", function() {
 			return;
 		}
 
-		if (cmd === "clear") {
-			commands[cmd](); return;
+		if (cmd === "clear" || cmd === "cls") {
+			commands["clear"](); return;
+		}
+
+		if (aliases[cmd] != undefined) {
+			cmd = aliases[cmd]
 		}
 
 		let response = typeof commands[cmd] === "function" ? commands[cmd]() : commands[cmd] || get_closest_command(cmd);
