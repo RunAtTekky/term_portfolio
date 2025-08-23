@@ -11,8 +11,13 @@ h1 {
 	color: red;
 }
 
-main {
+body {
+	height: 100vh;
+	width: 100vw;
 	background: linear-gradient(135deg, #020c1b, #001a33);
+}
+
+main {
 	height: 100vh;
 	width: 100vw;
 
@@ -143,10 +148,15 @@ input:focus {
 }
 
 @media (max-width: 768px) {
+	body {
+		height: 100svh;
+	}
+
 	main {
 		flex-direction: column;
 		font-size: 12px;
 		overflow: hidden;
+		height: 85svh;
 	}
 
 	.cmd-line {
@@ -158,7 +168,7 @@ input:focus {
 	}
 
 	#terminal-container {
-		height: 70vh;
+		height: 50vh;
 		width: 95vw;
 		margin: auto;
 	}
@@ -170,6 +180,7 @@ input:focus {
 	}
 
 	#sidebar button {
+		height: 10vh;
 		font-size: small;
 	}
 }
